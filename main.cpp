@@ -9,5 +9,6 @@ using namespace std;
 int main()
 {
     testConstructor();
+    testOperatorPlus();
     return 0;
 }

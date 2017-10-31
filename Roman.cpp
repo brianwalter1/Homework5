@@ -49,6 +49,10 @@ Roman::Roman()
     value = 0;
 }
 
+Roman::Roman(int v) {
+    value = v;
+}
+
 string Roman::convertToRoman() const
 {
     //TODO: Code this function
@@ -79,12 +83,22 @@ void Roman::convertFromRoman(const string &roman)
 
 //TODO: Code Operators
 //TODO: Write Doxygen comments
-Roman Roman::operator+(const Roman &) const {
-    return Roman();
+Roman Roman::operator+(const Roman &a) const {
+    int temp;
+    temp = value + a.value;
+    return Roman(temp);
 }
 
-Roman Roman::operator+(const int) const {
-    return Roman();
+Roman Roman::operator+(const int a) const {
+    int temp;
+    temp = value + a;
+    return Roman(temp);
+}
+
+Roman operator+(const int i, const Roman &a) {
+    int temp = i;
+    temp += a.value;
+    return Roman(temp);
 }
 
 void Roman::operator+=(const Roman &) {
@@ -99,6 +113,7 @@ Roman Roman::operator++() {
     return Roman();
 }
 
+/*
 void testOutput() {
     Roman a("MDCLXVI");
     string b = a.convertToRoman();
@@ -109,6 +124,7 @@ void testOutput() {
     b = c.convertToRoman();
     checkTest("testOutput #2", "VII", b);
 }
+*/
 
 //This helps with testing, do not modify.
 bool checkTest(string testName, string whatItShouldBe, string whatItIs )
@@ -123,4 +139,29 @@ bool checkTest(string testName, string whatItShouldBe, string whatItIs )
         cout << "****** Failed test " << testName << " ****** " << endl << "     Object contained: "<< whatItIs << endl << "     Output should have contained: " << whatItShouldBe << endl;
         return false;
     }
+}
+
+void testOperatorPlus()
+{
+    //Test adding two roman objects
+    Roman a("XVI");
+    Roman b("MDCLXVI");
+    Roman c = a + b;
+    checkTest("testOperatorPlus #1", 1682, c);
+    //make sure the left and right operands weren't modified
+    checkTest("testOperatorPlus #2", 16, a);
+    checkTest("testOperatorPlus #3", 1666, b);
+
+    //Test adding an object with an int
+    c = a + 52;
+    checkTest("testOperatorPlus #4", 68, c);
+    //make sure the left operand wasn't modified
+    checkTest("testOperatorPlus #5", 16, a);
+
+    //Test adding an int with an object
+    c = 578 + a;
+    checkTest("testOperatorPlus #6", 594, c);
+    //make sure the right operand wasn't modified
+    checkTest("testOperatorPlus #7", 16, a);
+
 }
