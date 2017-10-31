@@ -113,7 +113,7 @@ Roman Roman::operator++() {
     return Roman();
 }
 
-/*
+/*  Uncomment this when the convertToRoman() is finished
 void testOutput() {
     Roman a("MDCLXVI");
     string b = a.convertToRoman();
