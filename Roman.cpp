@@ -101,12 +101,12 @@ Roman operator+(const int i, const Roman &a) {
     return Roman(temp);
 }
 
-void Roman::operator+=(const Roman &) {
-
+void Roman::operator+=(const Roman &a) {
+    value = value + a.value;
 }
 
-void Roman::operator+=(const int) {
-
+void Roman::operator+=(const int a) {
+    value = value + a;
 }
 
 Roman Roman::operator++() {
@@ -164,4 +164,19 @@ void testOperatorPlus()
     //make sure the right operand wasn't modified
     checkTest("testOperatorPlus #7", 16, a);
 
+}
+
+void testOperatorPlusEqual()
+{
+    //Test adding two roman objects
+    Roman a("MLII");
+    Roman b("DDCCI");
+    a += b;
+    checkTest("testOperatorPlusEqual #1", 2253, a);
+    //make sure the right operand wasn't modified
+    checkTest("testOperatorPlusEqual #2", 1201, b);
+
+    //Test adding on an integer
+    b += 17;
+    checkTest("testOperatorPlusEqual #3", 1218, b);
 }

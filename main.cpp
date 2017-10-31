@@ -10,5 +10,6 @@ int main()
 {
     testConstructor();
     testOperatorPlus();
+    testOperatorPlusEqual();
     return 0;
 }

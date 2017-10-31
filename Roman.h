@@ -11,6 +11,7 @@ using namespace std;
 //Function Prototypes
 void testConstructor();
 void testOperatorPlus();
+void testOperatorPlusEqual();
 
 //Class Definition
 class Roman
