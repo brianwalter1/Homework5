@@ -12,6 +12,7 @@ using namespace std;
 void testConstructor();
 void testOperatorPlus();
 void testOperatorPlusEqual();
+void testOperatorIncrement();
 
 //Class Definition
 class Roman

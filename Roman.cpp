@@ -49,7 +49,8 @@ Roman::Roman()
     value = 0;
 }
 
-Roman::Roman(int v) {
+Roman::Roman(int v)
+{
     value = v;
 }
 
@@ -83,33 +84,39 @@ void Roman::convertFromRoman(const string &roman)
 
 //TODO: Code Operators
 //TODO: Write Doxygen comments
-Roman Roman::operator+(const Roman &a) const {
+Roman Roman::operator+(const Roman &a) const
+{
     int temp;
     temp = value + a.value;
     return Roman(temp);
 }
 
-Roman Roman::operator+(const int a) const {
+Roman Roman::operator+(const int a) const
+{
     int temp;
     temp = value + a;
     return Roman(temp);
 }
 
-Roman operator+(const int i, const Roman &a) {
+Roman operator+(const int i, const Roman &a)
+{
     int temp = i;
     temp += a.value;
     return Roman(temp);
 }
 
-void Roman::operator+=(const Roman &a) {
+void Roman::operator+=(const Roman &a)
+{
     value = value + a.value;
 }
 
-void Roman::operator+=(const int a) {
+void Roman::operator+=(const int a)
+{
     value = value + a;
 }
 
-Roman Roman::operator++() {
+Roman Roman::operator++()
+{
     return Roman();
 }
 
@@ -179,4 +186,14 @@ void testOperatorPlusEqual()
     //Test adding on an integer
     b += 17;
     checkTest("testOperatorPlusEqual #3", 1218, b);
+}
+
+void testOperatorIncrement()
+{
+    //Test prefix increment
+    Roman a("MLII");
+    Roman b("DDCCI");
+    b = ++a;
+    checkTest("testOperatorIncrement #1", 1053, a);
+    checkTest("testOperatorIncrement #2", 1053, b);
 }
