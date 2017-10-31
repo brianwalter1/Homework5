@@ -77,6 +77,39 @@ void Roman::convertFromRoman(const string &roman)
     value = temp;
 }
 
+//TODO: Code Operators
+//TODO: Write Doxygen comments
+Roman Roman::operator+(const Roman &) const {
+    return Roman();
+}
+
+Roman Roman::operator+(const int) const {
+    return Roman();
+}
+
+void Roman::operator+=(const Roman &) {
+
+}
+
+void Roman::operator+=(const int) {
+
+}
+
+Roman Roman::operator++() {
+    return Roman();
+}
+
+void testOutput() {
+    Roman a("MDCLXVI");
+    string b = a.convertToRoman();
+    checkTest("testOutput #1", "MDCLXVI", b);
+
+    //This is really the value 7.  Your code should correctly read this in and convert it back to VII.
+    Roman c("IIIIIII");
+    b = c.convertToRoman();
+    checkTest("testOutput #2", "VII", b);
+}
+
 //This helps with testing, do not modify.
 bool checkTest(string testName, string whatItShouldBe, string whatItIs )
 {
