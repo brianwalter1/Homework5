@@ -1,5 +1,5 @@
 //
-// Created by Brian Walter on 10/30/2017.
+// Created by Brian Walter  on 10/30/2017.
 //
 
 #include "Roman.h"
@@ -54,11 +54,54 @@ Roman::Roman(int v)
     value = v;
 }
 
+/*!
+ * converts an integer into roman numeral values
+ * @return
+ */
 string Roman::convertToRoman() const
 {
-    //TODO: Code this function
-    //TODO: Write doxygen comment
-    return std::__cxx11::string();
+    string temp;
+    for(unsigned int i = value; i > 0;)
+    {
+        if(i >= 1000)
+        {
+            temp += 'M';
+            i = i - 1000;
+        }
+        if(i < 1000 && i >= 500)
+        {
+            temp += 'D';
+            i = i - 500;
+        }
+        if(i < 500 && i >= 100)
+        {
+            temp += 'C';
+            i = i - 100;
+        }
+        if(i < 100 && i >= 50)
+        {
+            temp += 'L';
+            i = i - 50;
+        }
+        if(i < 50 && i >= 10)
+        {
+            temp += 'X';
+            i = i - 10;
+        }
+        if(i < 10 && i >= 5)
+        {
+            temp += 'V';
+            i = i - 5;
+        }
+        if(i <= 4 && i > 0)
+        {
+            temp += 'I';
+            i--;
+        }
+    }
+
+    return temp;
+   // return std::__cxx11::string();
 }
 
 void Roman::convertFromRoman(const string &roman)
@@ -117,11 +160,13 @@ void Roman::operator+=(const int a)
 
 Roman Roman::operator++()
 {
-    return Roman();
+    value = value += 1;
+    return Roman(value);
 }
 
-/*  Uncomment this when the convertToRoman() is finished
-void testOutput() {
+ // Uncomment this when the convertToRoman() is finished
+/*void testOutput()
+ {
     Roman a("MDCLXVI");
     string b = a.convertToRoman();
     checkTest("testOutput #1", "MDCLXVI", b);
