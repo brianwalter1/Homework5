@@ -34,6 +34,20 @@ bool checkTest(string testName, int whatItShouldBe, const Roman& obj )
         return false;
     }
 }
+//This helps with testing, do not modify.
+bool checkTest(string testName, string whatItShouldBe, string whatItIs )
+{
+    if (whatItShouldBe == whatItIs)
+    {
+        cout << "Passed " << testName << endl;
+        return true;
+    }
+    else
+    {
+        cout << "****** Failed test " << testName << " ****** " << endl << "     Object contained: "<< whatItIs << endl << "     Output should have contained: " << whatItShouldBe << endl;
+        return false;
+    }
+}
 /*!
  *  TODO: Fill in description
  */
@@ -101,7 +115,7 @@ string Roman::convertToRoman() const
     }
 
     return temp;
-   // return std::__cxx11::string();
+    // return std::__cxx11::string();
 }
 
 void Roman::convertFromRoman(const string &roman)
@@ -164,33 +178,15 @@ Roman Roman::operator++()
     return Roman(value);
 }
 
- // Uncomment this when the convertToRoman() is finished
-/*void testOutput()
- {
+void testOutput()
+{
     Roman a("MDCLXVI");
     string b = a.convertToRoman();
     checkTest("testOutput #1", "MDCLXVI", b);
-
     //This is really the value 7.  Your code should correctly read this in and convert it back to VII.
     Roman c("IIIIIII");
     b = c.convertToRoman();
     checkTest("testOutput #2", "VII", b);
-}
-*/
-
-//This helps with testing, do not modify.
-bool checkTest(string testName, string whatItShouldBe, string whatItIs )
-{
-    if (whatItShouldBe == whatItIs)
-    {
-        cout << "Passed " << testName << endl;
-        return true;
-    }
-    else
-    {
-        cout << "****** Failed test " << testName << " ****** " << endl << "     Object contained: "<< whatItIs << endl << "     Output should have contained: " << whatItShouldBe << endl;
-        return false;
-    }
 }
 
 void testOperatorPlus()

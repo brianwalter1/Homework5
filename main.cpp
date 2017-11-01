@@ -12,5 +12,6 @@ int main()
     testOperatorPlus();
     testOperatorPlusEqual();
     testOperatorIncrement();
+    testOutput();
     return 0;
 }

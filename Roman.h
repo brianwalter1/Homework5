@@ -13,6 +13,7 @@ void testConstructor();
 void testOperatorPlus();
 void testOperatorPlusEqual();
 void testOperatorIncrement();
+void testOutput();
 
 //Class Definition
 class Roman
