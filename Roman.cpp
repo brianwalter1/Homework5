@@ -49,7 +49,7 @@ bool checkTest(string testName, string whatItShouldBe, string whatItIs )
     }
 }
 /*!
- *  TODO: Fill in description
+ *  Constructor with string as arg
  */
 Roman::Roman(const string &str)
 {
@@ -62,7 +62,10 @@ Roman::Roman()
 {
     value = 0;
 }
-
+/*!
+ * Constructor with integer as arg
+ * @param v
+ */
 Roman::Roman(int v)
 {
     value = v;
@@ -117,7 +120,10 @@ string Roman::convertToRoman() const
     return temp;
     // return std::__cxx11::string();
 }
-
+/*!
+ * Converts string of a Roman Number into an integer
+ * @param roman
+ */
 void Roman::convertFromRoman(const string &roman)
 {
     int temp = 0;
@@ -135,49 +141,71 @@ void Roman::convertFromRoman(const string &roman)
             default: cout << "Error, value at " << i << " is not a valid roman numeral.\n";break;
         }
     }
-    //TODO: Write doxygen comment
     value = temp;
 }
 
-//TODO: Code Operators
-//TODO: Write Doxygen comments
+/*!
+ * Overloaded operator: Adds two Roman objects
+ * @param a
+ * @return
+ */
 Roman Roman::operator+(const Roman &a) const
 {
     int temp;
     temp = value + a.value;
     return Roman(temp);
 }
-
+/*!
+ * Overloaded operator: Adds a Roman and integer
+ * @param a
+ * @return
+ */
 Roman Roman::operator+(const int a) const
 {
     int temp;
     temp = value + a;
     return Roman(temp);
 }
-
+/*!
+ * Overloaded operator: Adds an integer and Roman
+ * @param i
+ * @param a
+ * @return
+ */
 Roman operator+(const int i, const Roman &a)
 {
     int temp = i;
     temp += a.value;
     return Roman(temp);
 }
-
+/*!
+ * Overloaded operator: Adds two Roman
+ * @param a
+ */
 void Roman::operator+=(const Roman &a)
 {
     value = value + a.value;
 }
-
+/*!
+ * Overloaded operator: Adds integer to Roman
+ * @param a
+ */
 void Roman::operator+=(const int a)
 {
     value = value + a;
 }
-
+/*!
+ * Overloaded operator: Adds 1 to Roman value
+ * @return
+ */
 Roman Roman::operator++()
 {
     value = value += 1;
     return Roman(value);
 }
-
+/*!
+ * Test the output of convertToRoman()
+ */
 void testOutput()
 {
     Roman a("MDCLXVI");
@@ -188,7 +216,9 @@ void testOutput()
     b = c.convertToRoman();
     checkTest("testOutput #2", "VII", b);
 }
-
+/*!
+ * Test overloaded addition operators
+ */
 void testOperatorPlus()
 {
     //Test adding two roman objects
@@ -213,7 +243,9 @@ void testOperatorPlus()
     checkTest("testOperatorPlus #7", 16, a);
 
 }
-
+/*!
+ * Test overloaded plus equal operators
+ */
 void testOperatorPlusEqual()
 {
     //Test adding two roman objects
@@ -228,7 +260,9 @@ void testOperatorPlusEqual()
     b += 17;
     checkTest("testOperatorPlusEqual #3", 1218, b);
 }
-
+/*!
+ * Test overloaded plus plus operator
+ */
 void testOperatorIncrement()
 {
     //Test prefix increment
